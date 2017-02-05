@@ -1,7 +1,34 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+panel1 = PanelProvider.create(code: Faker::Code.ean)
+panel2 = PanelProvider.create(code: Faker::Code.ean)
+panel3 = PanelProvider.create(code: Faker::Code.ean)
+
+20.times do
+  Location.create!(
+    name: Faker::Address.city,
+    external_id: Faker::Number.number(3),
+    secret_code: Faker::Code.isbn
+  )
+end
+
+country1 = Country.create(panel_provider_id: panel1.id, country_code: Faker::Address.country_code)
+country2 = Country.create(panel_provider_id: panel2.id, country_code: Faker::Address.country_code)
+country3 = Country.create(panel_provider_id: panel3.id, country_code: Faker::Address.country_code)
+
+location_group1 = LocationGroup.create(name: Faker::Pokemon.location, panel_provider_id: panel1.id, country_id: country1.id)
+location_group1 = LocationGroup.create(name: Faker::Pokemon.location, panel_provider_id: panel2.id, country_id: country2.id)
+location_group1 = LocationGroup.create(name: Faker::Pokemon.location, panel_provider_id: panel3.id, country_id: country3.id)
+location_group1 = LocationGroup.create(name: Faker::Pokemon.location, panel_provider_id: panel1.id, country_id: country1.id)
+
+target_group1 = TargetGroup.create(name: Faker::Team.name, external_id: Faker::Number.number(3), secret_code: Faker::Code.isbn, panel_provider_id: panel1.id)
+target_group1 = TargetGroup.create(name: Faker::Team.name, external_id: Faker::Number.number(3), secret_code: Faker::Code.isbn, panel_provider_id: panel1.id)
+target_group1 = TargetGroup.create(name: Faker::Team.name, external_id: Faker::Number.number(3), secret_code: Faker::Code.isbn, panel_provider_id: panel1.id)
+target_group1 = TargetGroup.create(name: Faker::Team.name, external_id: Faker::Number.number(3), secret_code: Faker::Code.isbn, panel_provider_id: panel1.id)
+
+4.times do
+  providers = PanelProvider.all
+  provider = providers.delete(providers.sample) || PanelProvider.first.id
+  target_group1 = TargetGroup.create(name: Faker::Team.name, external_id: Faker::Number.number(3), secret_code: Faker::Code.isbn, panel_provider_id: provider)
+  target_group1_child_1 = TargetGroup.create(name: Faker::Team.name, external_id: Faker::Number.number(3), secret_code: Faker::Code.isbn, parent_id: target_group1.id, panel_provider_id: provider)
+  target_group1_child_1_2 = TargetGroup.create(name: Faker::Team.name, external_id: Faker::Number.number(3), secret_code: Faker::Code.isbn, parent_id: target_group1_child_1.id, panel_provider_id: provider)
+  target_group1_child_1_2_2 = TargetGroup.create(name: Faker::Team.name, external_id: Faker::Number.number(3), secret_code: Faker::Code.isbn, parent_id: target_group1_child_1_2.id, panel_provider_id: provider)
+end
