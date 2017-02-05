@@ -7,4 +7,7 @@ RSpec.describe LocationGroup, type: :model do
    it { is_expected.to belong_to :country }
    it { is_expected.to belong_to :panel_provider }
  end
+ describe 'validations' do
+   it { is_expected.to validate_presence_of :name }
+ end
 end

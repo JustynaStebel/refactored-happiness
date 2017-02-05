@@ -7,4 +7,7 @@ RSpec.describe Country, type: :model do
    it { is_expected.to have_one :location_group }
    it { is_expected.to belong_to :panel_provider }
  end
+ describe 'validations' do
+   it { is_expected.to validate_presence_of :country_code }
+ end
 end
