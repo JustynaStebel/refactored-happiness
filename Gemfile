@@ -15,6 +15,11 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
+group :test do
+  gem 'shoulda-matchers'
+  gem 'rails-controller-testing'
+end
+
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
