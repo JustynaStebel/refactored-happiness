@@ -15,9 +15,9 @@ country2 = Country.create(panel_provider_id: panel2.id, country_code: Faker::Add
 country3 = Country.create(panel_provider_id: panel3.id, country_code: Faker::Address.country_code)
 
 location_group1 = LocationGroup.create(name: Faker::Pokemon.location, panel_provider_id: panel1.id, country_id: country1.id)
-location_group1 = LocationGroup.create(name: Faker::Pokemon.location, panel_provider_id: panel2.id, country_id: country2.id)
-location_group1 = LocationGroup.create(name: Faker::Pokemon.location, panel_provider_id: panel3.id, country_id: country3.id)
-location_group1 = LocationGroup.create(name: Faker::Pokemon.location, panel_provider_id: panel1.id, country_id: country1.id)
+location_group2 = LocationGroup.create(name: Faker::Pokemon.location, panel_provider_id: panel2.id, country_id: country2.id)
+location_group3 = LocationGroup.create(name: Faker::Pokemon.location, panel_provider_id: panel3.id, country_id: country3.id)
+location_group4 = LocationGroup.create(name: Faker::Pokemon.location, panel_provider_id: panel1.id, country_id: country1.id)
 
 4.times do
   providers = PanelProvider.all
