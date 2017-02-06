@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'faker'
 gem 'devise_token_auth'
 gem 'omniauth'
+gem 'nokogiri'
 
 group :development, :test do
   gem 'byebug'

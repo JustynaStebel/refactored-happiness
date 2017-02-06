@@ -193,6 +193,7 @@ DEPENDENCIES
   faker
   jbuilder (~> 2.0)
   jquery-rails
+  nokogiri
   omniauth
   rails (= 4.2.7)
   rails-controller-testing
