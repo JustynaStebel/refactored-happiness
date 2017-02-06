@@ -12,11 +12,10 @@ location_group3 = LocationGroup.create(name: Faker::Pokemon.location, panel_prov
 location_group4 = LocationGroup.create(name: Faker::Pokemon.location, panel_provider_id: panel1.id, country_id: country1.id)
 
 20.times do
-  Location.create!(
+  LocationGroup.all.sample.locations.create(
     name: Faker::Address.city,
     external_id: Faker::Number.number(3),
     secret_code: Faker::Code.isbn,
-    location_group_id: LocationGroup.all.sample.id
   )
 end
 
@@ -24,7 +23,11 @@ end
   providers = PanelProvider.all
   provider = providers.delete(providers.sample) || PanelProvider.first.id
   target_group1 = TargetGroup.create(name: Faker::Team.name, external_id: Faker::Number.number(3), secret_code: Faker::Code.isbn, panel_provider_id: provider)
+  target_group1.countries << Country.all.sample
   target_group1_child_1 = TargetGroup.create(name: Faker::Team.name, external_id: Faker::Number.number(3), secret_code: Faker::Code.isbn, parent_id: target_group1.id, panel_provider_id: provider)
+  target_group1_child_1.countries << Country.all.sample
   target_group1_child_1_2 = TargetGroup.create(name: Faker::Team.name, external_id: Faker::Number.number(3), secret_code: Faker::Code.isbn, parent_id: target_group1_child_1.id, panel_provider_id: provider)
+  target_group1_child_1_2.countries << Country.all.sample
   target_group1_child_1_2_2 = TargetGroup.create(name: Faker::Team.name, external_id: Faker::Number.number(3), secret_code: Faker::Code.isbn, parent_id: target_group1_child_1_2.id, panel_provider_id: provider)
+  target_group1_child_1_2_2.countries << Country.all.sample
 end
