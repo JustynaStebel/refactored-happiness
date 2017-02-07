@@ -2,8 +2,8 @@ FactoryGirl.define do
   factory :country do
     country_code "BT"
     panel_provider
-    after(:create) do |group|
-      FactoryGirl.create_list(:target_group, 5, country: group)
+    after(:create) do |country|
+      country.target_groups << FactoryGirl.create(:target_group)
     end
   end
 end
