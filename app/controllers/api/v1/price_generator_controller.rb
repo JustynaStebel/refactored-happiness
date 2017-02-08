@@ -3,8 +3,8 @@ class Api::V1::PriceGeneratorController < Api::V1::BaseController
 
   def evaluate_target
     target_group_id = @country.target_groups.find_by(id: params[:target_group_id])
-    location_ids = params[:locations].map { |loc| loc["id"] }
-    locations = @country.location_group.locations.find_by(location_ids)
+    location_ids = params[:locations].map { |loc| loc["id"].to_i }
+    locations = @country.location_group.locations.find_by(id: location_ids)
     panel_id = @country.panel_provider_id
     render json: { price: get_panel(panel_id).perform }, status: :ok
   end
