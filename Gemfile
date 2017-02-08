@@ -15,9 +15,9 @@ gem 'omniauth'
 gem 'nokogiri'
 
 group :development, :test do
-  gem 'byebug'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'pry'
 end
 
 group :test do
